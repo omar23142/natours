@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "NODE_ENV=production nodemon server.js",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "watchjs": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
     "parcel": "parcel-bundler index.js"
   },
