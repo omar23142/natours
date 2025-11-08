@@ -104,7 +104,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.isLogedin = async (req, res, next) => {
   // 1 check if the req.cookie has the token
  try {
-  console.log('in the is logeddddddddddddin ')
+  //console.log('in the is logeddddddddddddin ')
   let token = undefined;
   res.locals.user = undefined;
   if (req.cookies.jwt) {
@@ -198,7 +198,7 @@ exports.resetPass = catchAsync(async (req, res, next) => {
   user.PassResetToken = undefined;
   user.PassResetTokenExpire = undefined;
   await user.save();
-  console.log(user);
+  //console.log(user);
   // 3) update the changePasswordAt for the current user
   // 4) sigin user
   sendToken(res, user, 200);

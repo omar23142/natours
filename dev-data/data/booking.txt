@@ -1,0 +1,39 @@
+[
+  {
+    "_id": "690b4ab4b1cb5568980f7f99",
+    "tour": {
+      "_id": "5c88fa8cf4afda39709c2955",
+      "name": "The Sea Explorer",
+      "guides": [
+        {
+          "_id": "5c8a22c62f8fb814b56fa18b",
+          "name": "Miyah Myles",
+          "email": "miyah@example.com",
+          "photo": "user-12.jpg",
+          "role": "lead-guide"
+        },
+        {
+          "_id": "5c8a1f4e2f8fb814b56fa185",
+          "name": "Jennifer Hardy",
+          "email": "jennifer@example.com",
+          "photo": "user-6.jpg",
+          "role": "guide"
+        }
+      ],
+      "durationWeeks": null,
+      "id": "5c88fa8cf4afda39709c2955"
+    },
+    "user": {
+      "_id": "5c8a1dfa2f8fb814b56fa181",
+      "name": "Lourdes Browning",
+      "email": "loulou@example.com",
+      "photo": "user-2.jpg",
+      "role": "user",
+      "__v": 0
+    },
+    "price": 497,
+    "createdAt": "2025-11-05T12:57:58.900Z",
+    "paid": true,
+    "__v": 0
+  }
+]

@@ -17,14 +17,14 @@ const showAlert = (type, message) =>{
 
 const UpdatUserData = async (data, type) => {
     try {
-        const url = type=== 'password' ? 'http://127.0.0.1:3000/api/v1/users/updateMypssword' :
-            'http://127.0.0.1:3000/api/v1/users/updateMe'
+        const url = type=== 'password' ? '/api/v1/users/updateMypssword' :
+            '/api/v1/users/updateMe'
         const results = await axios( {
             method:'PATCH',
             url,
             data
         });
-        console.log(results);
+        //console.log(results);
         if ( results.data.status === 'success')
             showAlert('success', `${type.toUpperCase()} Updated Successfuly`)
     }catch(err) {
@@ -42,14 +42,14 @@ if (userDataForm)
         form.append('name', document.getElementById('name').value);
         form.append('email',document.getElementById('email').value );
         form.append('photo', document.getElementById('photo').files[0]);
-        console.log(form);
+        //console.log(form);
 
         UpdatUserData(form, 'data');
     });
 if(userPassForm)
     userPassForm.addEventListener('submit', e=>{
         e.preventDefault();
-        console.log('in the user passsssssssssssss')
+        //console.log('in the user passsssssssssssss')
         const passwordCurrent = document.getElementById('password-current').value;
         const passwordConfirm = document.getElementById('password-confirm').value;
         const password = document.getElementById('password').value;

@@ -8,7 +8,7 @@ const formBox =document.querySelector('.form');
 
 if (mapBox) {
     const locations = JSON.parse(mapBox.dataset.locations);
-    console.log(locations);
+    //console.log(locations);
     displayMap(locations);
 }
 
@@ -17,7 +17,7 @@ if (formBox) {
     e.preventDefault();});
     const email = document.getElementById('email').value;
     const password =document.getElementById('password').value;
-    console.log('email and pass', email , password)
+    //console.log('email and pass', email , password)
     login(email, password);
     };
     

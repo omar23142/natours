@@ -13,27 +13,29 @@ process.on('uncaughtException', (err) => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
+//const DB = 'mongodb+srv://almgoshomar10_db_user:HESVADyHnsKgL2qr@cluster0.rpf4zjy.mongodb.net/?appName=Cluster0'
 const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD,
+  '<db_password>',
+  process.env.DB_PASSWORD,
 );
+console.log('this is DB: ',DB)
 
-// mongoose
-//   .connect(DB, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false
-//   })
-//   .then(() => console.log('DB connection successful!'));
 mongoose
-  .connect(process.env.DATABASE_LOCAL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(DB, {
+    //useNewUrlParser: true,
+    //useCreateIndex: true,
+    //useFindAndModify: false
   })
-  .then((con) => {
-    //console.log(con.connections);
-    console.log('connected to the databass sucessfuly ');
-  });
+  .then(() => console.log('remote DB connection successful!'));
+// mongoose
+//   .connect(process.env.DATABASE_LOCAL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then((con) => {
+//     //console.log(con.connections);
+//     console.log('connected to the databass sucessfuly ');
+//   });
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {

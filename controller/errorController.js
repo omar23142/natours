@@ -36,7 +36,7 @@ const SendErrorPro = (err, req, res) => {
 } else {
   if (err.isOperational) {
     console.error(err);
-    console.log('thisistesssst' , err.message )
+    //console.log('thisistesssst' , err.message )
     res.status(err.statusCode).render('error', {
       title: 'something went wrong',
       msg: err.message,
@@ -85,14 +85,14 @@ module.exports = (err, req, res, next) => {
   if (process.env.NODE_ENV === 'development') {
     SendErrorDev(err, req, res);
   } else if (process.env.NODE_ENV === 'production') {
-    console.log('production');
+    //console.log('production');
     let error = JSON.parse(JSON.stringify(err));
     error.message = err.message;
-    console.log('======',err)
-    console.log('+++++', error)
+    //console.log('======',err)
+    //console.log('+++++', error)
     if (error.name === 'CastError') error = CastErrorDB(error);
     if (error.code === 11000) {
-      console.log(true);
+      //console.log(true);
       error = DublicatedErrDB(error);
     }
     if (error.name === 'ValidationError') error = ValidationErrDB(error);

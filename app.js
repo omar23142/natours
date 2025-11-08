@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
+const compression = require('compression');
 //const fs = require('fs');
 //const { get } = require('http');
 const morgan = require('morgan');
@@ -66,6 +67,8 @@ app.use(
     ],
   }),
 );
+// for comprisse the text 
+app.use(compression());
 // development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));

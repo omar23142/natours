@@ -8,7 +8,7 @@ class APIFeatire {
   }
 
   filter() {
-    console.log(this.req.query);
+    //console.log(this.req.query);
     let queryObj;
     //console.log('dddddddd',this.req.query);
     if (this.req.usealias) {
@@ -25,9 +25,9 @@ class APIFeatire {
     //ADVANCE FILLTIRING
     //console.log(qs.parse(req.query));
     let queryStr = JSON.stringify(queryObj);
-    console.log('queryStr', queryStr);
+    //console.log('queryStr', queryStr);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    console.log('queryStr', qs.parse(JSON.parse(queryStr)));
+    //console.log('queryStr', qs.parse(JSON.parse(queryStr)));
     this.query = this.query.find(qs.parse(JSON.parse(queryStr)));
     return this;
   }
