@@ -25,6 +25,7 @@ const bookingRouter = require('./routes/bookingRoute');
 
 const app = express();
 
+app.enable('trust proxy');
 app.set('view engine' , 'ejs');
 app.use(expressLayouts);
 app.set('layout', 'layout');

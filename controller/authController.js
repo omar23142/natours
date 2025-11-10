@@ -15,8 +15,10 @@ const sendToken = (res, user, statusCode) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
     ),
     httpOnly: true,
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
   };
-  if (process.env.NODE_ENV === 'prodction') cookieOption.secure = true;
+
+ 
   res.cookie('jwt', token, cookieOption);
   user.password = undefined;
   res.status(statusCode).json({
