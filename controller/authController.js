@@ -6,7 +6,7 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const Email = require('../utils/mail');
 
-const sendToken = (res, user, statusCode) => {
+const sendToken = (req, res, user, statusCode) => {
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
@@ -43,7 +43,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   //console.log('testtttttt',newUser._id);
   newUser.password = undefined;
   newUser.active = undefined;
-  sendToken(res, newUser, 201);
+  sendToken(req, res, newUser, 201);
 });
 
 exports.sigin = catchAsync(async (req, res, next) => {
@@ -56,7 +56,7 @@ exports.sigin = catchAsync(async (req, res, next) => {
   if (!freshUser || !(await freshUser.checkPass(password, freshUser.password)))
     return next(new AppError(401, 'the email or password is incorrect'));
   // send the token
-  sendToken(res, freshUser, 200);
+  sendToken(req, res, freshUser, 200);
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -203,7 +203,7 @@ exports.resetPass = catchAsync(async (req, res, next) => {
   //console.log(user);
   // 3) update the changePasswordAt for the current user
   // 4) sigin user
-  sendToken(res, user, 200);
+  sendToken(req, res, user, 200);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -218,7 +218,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.passwordConf = req.body.passwordConf;
   await user.save();
   // 4 log user in send jwt
-  sendToken(res, user, 200);
+  sendToken(req, res, user, 200);
 });
 
 exports.logOut = (req, res) => {
