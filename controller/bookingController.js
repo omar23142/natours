@@ -49,12 +49,15 @@ exports.getstripecheckoutSession = catchAsync( async (req, res, next) => {
     
 // });
 const creatNewBooking = async (session) => {
+    console.log('customer_email llllllll : ', session.customer_details.email)
+    console.log('customer_email llllllll : ', session.customer_email)
     console.log('in the creatNewBooking' , session);
     const tour = session.client_reference_id;
     console.log('tour', tour)
-    const user = User.findOne({ email: session.customer_email }).id;
+    const user = await User.findOne({ email: session.customer_details.email });
     console.log('user ' , user);
-    const price = session.line_items[0].price_data.product_data.unit_amount/100;
+    console.log('amount_total llllllll : ', session.amount_total)
+    const price = session.amount_total/100;
     console.log('price ' , price)
     const booking = await Booking.create({tour, user, price});
     console.log('booking: ', booking);
