@@ -50,15 +50,15 @@ exports.getAcountPage = async (req, res) => {
     });
 };
 
-// exports.updateUserData = catchAsync( async (req, res, next) => {
-//     // must active the middlware use.(express.urlencoded()) for put the submited information on the req.body
-//     console.log('this is tesssssssssssssssssst',req.body);
-//     const user = await User.findByIdAndUpdate(req.user.id, {name:req.body.name, email:req.body.email},{new:true, runValidators:true})
-//     res.status(200).render('account', {
-//         title:'ACCOUNT DETAILES',
-//         user
-//         });
-//     });
+exports.updateUserData = catchAsync( async (req, res, next) => {
+    // must active the middlware use.(express.urlencoded()) for put the submited information on the req.body
+    //console.log('this is tesssssssssssssssssst',req.body);
+    const user = await User.findByIdAndUpdate(req.user.id, {name:req.body.name, email:req.body.email},{new:true, runValidators:true})
+    res.status(200).render('account', {
+        title:'ACCOUNT DETAILES',
+        user
+        });
+    });
 
 exports.getUserBooking = catchAsync( async (req, res, next) => {
     // 1) find all booking
