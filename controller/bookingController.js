@@ -49,27 +49,27 @@ exports.getstripecheckoutSession = catchAsync( async (req, res, next) => {
     
 // });
 const creatNewBooking = async (session) => {
-    console.log('customer_email llllllll : ', session.customer_details.email)
-    console.log('customer_email llllllll : ', session.customer_email)
-    console.log('in the creatNewBooking' , session);
+    //console.log('customer_email llllllll : ', session.customer_details.email)
+    //console.log('customer_email llllllll : ', session.customer_email)
+    //console.log('in the creatNewBooking' , session);
     const tour = session.client_reference_id;
-    console.log('tour', tour)
+    //console.log('tour', tour)
     const user = await User.findOne({ email: session.customer_details.email });
-    console.log('user ' , user);
-    console.log('amount_total llllllll : ', session.amount_total)
+    //console.log('user ' , user);
+    //console.log('amount_total llllllll : ', session.amount_total)
     const price = session.amount_total/100;
-    console.log('price ' , price)
+    //console.log('price ' , price)
     const booking = await Booking.create({tour, user, price});
-    console.log('booking: ', booking);
+    //console.log('booking: ', booking);
     
 }
 
 exports.webhooksCheckout = (req, res, next) =>{
     let event;
     try {
-        console.log('in the webhookscheckout')
+        //console.log('in the webhookscheckout')
     const signature = req.headers['stripe-signature'];
-    console.log('sing', signature);
+    //console.log('sing', signature);
     event = stripe.webhooks.constructEvent( req.body, signature, process.env.STRIPE_WEbHOOK_SECRET );
 }   catch(err) {
     console.error(err);
