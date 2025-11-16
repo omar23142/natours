@@ -2,9 +2,9 @@ const express = require('express');
 const viewController = require('./../controller/viewsController');
 const router = express.Router();
 const authController = require('./../controller/authController');
-const bookingController = require('../controller/bookingController')
+//const bookingController = require('../controller/bookingController')
 
-
+router.use(viewController.setLocalsAlert)
 router.get('/', authController.isLogedin, viewController.getOverview);
 router.get('/tour/:slug',authController.isLogedin, viewController.getTour); 
 router.get('/login' ,authController.isLogedin, viewController.getLoginForm);

@@ -71,4 +71,12 @@ exports.getUserBooking = catchAsync( async (req, res, next) => {
         title:'MY BOOKING',
         tours
     })
-})
+});
+
+exports.setLocalsAlert = (req, res, next) => {
+    res.locals.alert = undefined;
+    const alert = req.query.alert;
+    if (alert === 'booking')
+        res.locals.alert = 'Your booking was successful pleas check your email for confirm'
+    next();
+}
